@@ -1,0 +1,162 @@
+// Global variable overrides. Must be declared before importing Valo.
+
+// Defines the plaintext font size, weight and family. Font size affects general component sizing.
+$v-font-size: 13px;
+//$v-font-weight: 300;
+//$v-font-family: "Open Sans", sans-serif;
+
+// Defines the border used by all components.
+//$v-border: 1px solid (v-shade 0.7);
+//$v-border-radius: 4px;
+
+// Affects the color of some component elements, e.g Button, Panel title, etc
+$v-background-color: hsl(210, 20%, 100%);
+// Affects the color of content areas, e.g  Panel and Window content, TextField input etc
+$v-app-background-color: $v-background-color;
+
+// Affects the visual appearance of all components
+//$v-gradient: v-linear 8%;
+//$v-bevel-depth: 30%;
+//$v-shadow-opacity: 5%;
+
+// Defines colors for indicating status (focus, success, failure)
+//$v-focus-color: valo-focus-color(); // Calculates a suitable color automatically
+//$v-friendly-color: #2c9720;
+//$v-error-indicator-color: #ed473b;
+
+// For more information, see: https://vaadin.com/book/-/page/themes.valo.html
+// Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
+
+ @font-face {
+    font-family: 'Vaadin-Icons';
+    src: url('fonts/Vaadin-Icons.eot');
+    src: url('fonts/Vaadin-Icons.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Vaadin-Icons.woff') format('woff'),
+         url('fonts/Vaadin-Icons.ttf') format('truetype'),
+         url('fonts/Vaadin-Icons.svg#icomoon') format('svg');
+}
+.Vaadin-Icons {
+    font-family: 'Vaadin-Icons';
+}
+
+
+@import "../valo/valo.scss";
+
+@mixin AudioLearningTheme {
+  @include valo;
+  
+ 
+ 
+//--------Botones Multimedia------------//
+
+	.botonesMultimedia .v-button:hover{background:#175F9B; margin-bottom:2px;}
+	.botonesMultimedia .v-button{margin-bottom:2px; background:#FFCC00; border:none; color:#FFF}
+  
+
+//-------Style Contenido-------//
+	.panelCuerpo{border:none; background:none}
+	.panelContenido{padding: 0px 80px; background:none}
+	.contenido{background:#FFF;}
+	.textFieldColor {background:#E5E9EF; color: #1A80DF; font-weight: bold;}
+	.v-panel-captionwrap .v-panel-caption{background:#175F9B; color:#FFF; font-weight: bold; border:none}
+	.buttonPlay  {color:#008000;}
+	.buttonEdit {color:#EFBF00;}
+	.buttonRemove {color:#A70000;}
+	
+	//-------Panel AudioCard-------//
+	
+	.carouselbutton{background:#FFCC00 !important; width:25px !important; height: 70px !important; margin-top: 100px !important;}
+	.carouselbutton:hover {background:#175F9B !important; width:25px !important; }
+	.descripcionAudioCard {padding:5px;}
+	.descripcionAudioCard .v-button{margin-bottom:2px;}
+	
+	.labelTituloCard { color: #175F9B; font-weight: bold; padding:5px; text-align:middle; }
+
+//-------Style Menu-------//
+	#myMenuBar .v-menubar {background:#175F9B; border:none; }
+	#myMenuBar .v-menubar-submenu .v-menubar-menuitem .v-menubar-menuitem-caption  {color:#999 !important} 
+	#myMenuBar .v-menubar-menuitem-caption {color: #FFF !important; }
+	#myMenuBar{padding: 5px 50px; background:#175F9B; border-bottom: 5px #FFCC00 solid; }
+	#myMenuBar .v-icon {color: #FFCC00;}
+ 
+	.v-menubar-menuitem-selected{ }
+    .v-menubar-submenu-indicator { }
+    .v-menubar-submenu {}
+   #myMenuBar  .v-menubar-menuitem:hover {background:#FFCC00 !important}
+    #myMenuBar .v-menubar-menuitem:hover .v-icon {color:#175F9B !important}
+    
+    .menuUsuario .v-icon {font-size:20px!important; margin-right:5px!important}
+    
+    
+//-------Style Componentes-------//
+	.componentList{border-bottom: 1px solid #CCC;}
+
+//-------Style Paginas-------//
+	.cabeceraContenido{border-bottom: 1px solid #CCC !important; margin-bottom: 20px;}
+
+//-------Style Upload-------//
+	.v-upload-immediate .v-button{background: url("icons/upload.png") no-repeat #E5F9EE ; padding: 12px 20px 30px 45px; border:#4AB59B solid 1px}
+	
+	.uploadImagen {background:#FFFBD9 !important; padding: 10px; border: dotted 1px #CCC;}
+	
+
+
+
+ //-------Style Tablas-------//
+	.v-table-cell-wrapper {white-space: normal !important;}
+	.v-table-cell-wrapper .h3 {margin:0px}    
+	.labelSizeAudios{font-size: 30px;}
+	.labelActivo{color: #00c100;}
+	.labelInactivo{color: #F10000; }
+	.publicacion{color: #0880F7; margin:2px 0px 10px 0px}
+	.adminMisaudios .v-icon{font-size:20px} 
+ 
+ //-------Style Mensaje Umanized-------//
+ 	.humanized{background:#bfda73;}
+  	.humanized .v-Notification-caption{color:#287928;}
+  	.humanized .v-Notification-description{color:#000;}
+
+ //-------Style Header Grid-------//
+.myGrid .v-grid-header .v-grid-cell {background:#175F9B !important;  color:#FFFFFF; font-weight: bold;}
+
+
+
+
+//-------Login -------//
+.loginTop{ padding: 260px; background:#fff url("textura/skulls.png")}
+.login{ margin-top: -260px; }
+.loginBottom{background:#1a69ab url("textura/random-grey-variations.png"); border-top:5px solid #FFCC00; margin-top: 100px}
+.loginImagen{margin-top: -80px}
+
+//-------Reproductor-------//
+	#vl_audio .v-caption{padding:0px; height:0px}
+	
+	.vl_infoAudio .h4{margin: 5px !important; }
+	.mih2 {border-bottom: 2px solid #FFCC00;}
+	.tituloComentarios{border-bottom: 1px solid #CCC;}
+	
+	
+
+
+//-------------Inicio---------//
+.tituloCategoria{border-bottom: #999 1px solid; color:#175F9B; font-size: 25px; font-weight:bold; text-align: center}
+.carousel{margin: 10px 0px 30px 0px}
+
+
+.v-table-orangeHeader .v-table-header{
+	//background-image: -webkit-linear-gradient(top, #F89C1C 2%, #DA6D26 98%);
+	//background-image: linear-gradient(to bottom,#F89C1C 2%, #DA6D26 98%);
+	background:#175F9B;
+	color: #FFF;	
+	font-size: 12px;
+	font-weight: bold;
+}
+
+
+.contenidoCSSLayout .v-panel{margin:5px; }
+
+.contenidoCSSLayout {text-align:center}
+}
+
+
+

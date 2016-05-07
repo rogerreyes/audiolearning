@@ -1,0 +1,1 @@
+$wnd.com_ud_webapp_ui_MyAppWidgetset.runAsyncCallback2('teb(1571,1,p$d);_.Tc=function yec(){d0b((!Y_b&&(Y_b=new i0b),Y_b),this.a.d)};HTd(cj)(2);\n//# sourceURL=com.ud.webapp.ui.MyAppWidgetset-2.js\n')
