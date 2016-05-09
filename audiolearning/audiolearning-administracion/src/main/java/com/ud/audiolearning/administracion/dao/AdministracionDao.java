@@ -1,21 +1,19 @@
 package com.ud.audiolearning.administracion.dao;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-
-import com.mongodb.DBRef;
 import com.ud.audiolearning.api.anotaciones.AudioLDao;
 import com.ud.audiolearning.api.dao.IDenunciasDao;
 import com.ud.audiolearning.api.domain.Denuncia;
 import com.ud.audiolearning.api.domain.ReporteDenuncia;
+import com.ud.audiolearning.api.domain.Rol;
+import com.ud.audiolearning.api.domain.Usuario;
 
 
 @AudioLDao
@@ -72,7 +70,6 @@ public class AdministracionDao implements IDenunciasDao {
 		return mongoTemplate.findOne(new Query().addCriteria(Criteria.where("id").is(idDenuncia).and("estado").is("A")),
 				Denuncia.class);
 	}
-
 	
 	public void actualizarDenunciaCierre (Denuncia denuncia){
 		Update update = new Update();
@@ -87,6 +84,61 @@ public class AdministracionDao implements IDenunciasDao {
 	
 	}
 	
+	public void insertarUsuario(Usuario usuario){
+		mongoTemplate.save(usuario);
+	}
 	
+	public void modificarUsuario(Usuario usuario){
+		Update update = new Update();
+		Query query = new Query();
+		query.addCriteria(Criteria.where("id").is(usuario.getId()));
+		update.set("nombres", usuario.getNombres());
+		update.set("apellidos", usuario.getApellidos());
+		update.set("nick", usuario.getNick());
+		update.set("email", usuario.getEmail());
+		update.set("genero", usuario.getGenero());
+		update.set("nacionalidad", usuario.getNacionalidad());
+		update.set("descripcion", usuario.getDescripcion());
+		update.set("facebook", usuario.getFacebook());
+		update.set("twitter", usuario.getTwitter());
+		update.set("fechaRegistro", usuario.getFechaRegistro());
+		update.set("contraseña", usuario.getContraseña());
+		update.set("blog", usuario.getBlog());
+		update.set("categorias", usuario.getCategorias());
+		update.set("rol", usuario.getRol());		
+		mongoTemplate.updateFirst(query, update, Usuario.class);
+	}
+	
+	public void eliminarUsuario(Usuario usuario){
+		Query query = new Query();
+		query.addCriteria(Criteria.where("id").is(usuario.getId()));		
+		mongoTemplate.findAndRemove(query, Usuario.class);
+	}
+	
+	public List<Usuario> listadoUsuarios(HashMap<String,String> Parametros){
+		if(Parametros != null){			
+			Criteria criteriaV1 = Criteria.where("nombres").regex(Parametros.get("nombres"));
+			Criteria criteriaV2 = Criteria.where("apellidos").regex(Parametros.get("apellidos"));
+			Criteria criteriaV3 = Criteria.where("nacionalidad").regex(Parametros.get("nacionalidad"));
+			Criteria criteriaV4 = Criteria.where("nick").regex(Parametros.get("nick"));
+			Criteria criteriaV5 = Criteria.where("email").regex(Parametros.get("email"));
+			Criteria criteriaV6 = Criteria.where("genero").regex(Parametros.get("genero"));
+			Query query = new Query(new Criteria().andOperator(criteriaV1,criteriaV2,criteriaV3,criteriaV4,criteriaV5,criteriaV6));	 
+			return mongoTemplate.find(query,Usuario.class);
+		}else{
+			return mongoTemplate.findAll(Usuario.class);
+		}
+				
+	}
+	
+	public Rol consultaROL(String id){
+		Query query = new Query();
+		query.addCriteria(Criteria.where("id").is(id));		
+		return  mongoTemplate.findOne(query, Rol.class);
+	}
+	
+	public List<Rol> listadoRol(){
+		return mongoTemplate.findAll(Rol.class);
+	}
 	
 }
