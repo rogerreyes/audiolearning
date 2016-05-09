@@ -45,7 +45,7 @@ public class PerfilDao {
 		update.set("blog", usuario.getBlog());
 		update.set("facebook", usuario.getFacebook());
 		update.set("twitter", usuario.getTwitter());
-		update.set("descripcion", usuario.getDecripcion());
+		update.set("descripcion", usuario.getDescripcion());
 		update.set("categorias", categorias);
 		
 		mongoTemplate.updateFirst(query, update, Usuario.class);

@@ -138,7 +138,7 @@ public class PerfilUsuario extends CustomComponent implements View {
 	private FieldGroup binder;
 
 	public PerfilUsuario() {
-
+		
 	}
 
 	@Override

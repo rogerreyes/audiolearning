@@ -22,7 +22,7 @@ public class Usuario implements Serializable {
 	private String email;
 	private String genero;
 	private String nacionalidad;
-	private String decripcion;
+	private String descripcion;
 	private String facebook;
 	private String twitter;
 	private Date fechaRegistro;
@@ -81,12 +81,12 @@ public class Usuario implements Serializable {
 		this.nacionalidad = nacionalidad;
 	}
 
-	public String getDecripcion() {
-		return decripcion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDecripcion(String decripcion) {
-		this.decripcion = decripcion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public String getFacebook() {
@@ -158,7 +158,7 @@ public class Usuario implements Serializable {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", nick=" + nick + ", email="
-				+ email + ", genero=" + genero + ", nacionalidad=" + nacionalidad + ", decripcion=" + decripcion
+				+ email + ", genero=" + genero + ", nacionalidad=" + nacionalidad + ", descripcion=" + descripcion
 				+ ", facebook=" + facebook + ", twitter=" + twitter + ", fechaRegistro=" + fechaRegistro
 				+ ", contraseña=" + contraseña + ", blog=" + blog + ", rol=" + rol + ", categorias=" + categorias + "]";
 	}
