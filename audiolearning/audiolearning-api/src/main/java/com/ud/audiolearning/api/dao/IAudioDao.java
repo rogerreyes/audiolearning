@@ -6,7 +6,7 @@ import org.bson.types.ObjectId;
 
 import com.mongodb.gridfs.GridFSDBFile;
 import com.ud.audiolearning.api.domain.Audio;
-
+import com.ud.audiolearning.api.domain.CriterioBusqueda;
 
 public interface IAudioDao {
 
@@ -23,10 +23,11 @@ public interface IAudioDao {
 	public void agregarFavorito(String idUsuario, Audio audio);
 
 	public void removerFavorito(String string, ObjectId objectId);
-	
-	public GridFSDBFile findAudioFile(String id) ;
 
-	public List<Audio> searchAudio(int pageInicio, int pageFin);
+	public GridFSDBFile findAudioFile(String id);
 
-	
+	public List<Audio> searchAudio(int pagina, int tamañoPagina, String texto);
+
+	public List<Audio> busquedaAvanzada(CriterioBusqueda criterioBusqueda, int skip, int limit);
+
 }

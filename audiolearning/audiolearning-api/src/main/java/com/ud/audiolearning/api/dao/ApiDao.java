@@ -44,4 +44,7 @@ public class ApiDao {
 		return mongoTemplate.find(new Query().addCriteria(Criteria.where("tipo").is("TIPODENUNCIA")), Parametrico.class);
 	}
 
+	public List<Parametrico> findAllPais(){
+		return mongoTemplate.find(new Query().addCriteria(Criteria.where("tipo").is("PAIS")), Parametrico.class);
+	}
 }

@@ -2,18 +2,17 @@ package com.ud.audiolearning.busquedas.service;
 
 
 
-import java.io.Serializable;
+
+
 import java.util.List;
 import java.util.function.Consumer;
-
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.mongodb.gridfs.GridFSDBFile;
 import com.ud.audiolearning.api.anotaciones.AudioLService;
 import com.ud.audiolearning.api.dao.IAudioDao;
 import com.ud.audiolearning.api.domain.Audio;
-
+import com.ud.audiolearning.api.domain.CriterioBusqueda;
 import com.ud.audiolearning.api.ui.AppSession;
 
 @AudioLService
@@ -62,13 +61,17 @@ public class BusquedasService implements com.ud.audiolearning.api.service.IBusqu
 	
 
 	@Override
-	public List<Audio> busquedaGeneralAudio(int pageInicio, int pageFin, String texto) {
-		
-		String[] array = texto.split(" ");
-		
-		
-		
-		return audioDao.searchAudio(pageInicio, pageFin);
+	public List<Audio> busquedaBasica(int pagina, int tamañoPagina, String texto) {
+		return audioDao.searchAudio(pagina, tamañoPagina, texto);
 	}
+	
+	
+	@Override
+	public List<Audio> busquedaAvanzada(CriterioBusqueda criterioBusqueda, int skip, int limit){
+
+		return audioDao.busquedaAvanzada(criterioBusqueda, skip, limit);
+				
+	}
+	
 	
 }

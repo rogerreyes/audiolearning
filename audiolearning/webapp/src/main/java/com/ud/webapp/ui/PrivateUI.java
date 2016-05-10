@@ -8,8 +8,11 @@ import org.vaadin.teemu.VaadinIcons;
 import com.ud.audiolearning.api.anotaciones.UIComponent;
 import com.ud.audiolearning.api.domain.ALItem;
 import com.ud.audiolearning.api.domain.ALMenuItem;
+import com.ud.audiolearning.api.domain.CriterioBusqueda;
 import com.ud.audiolearning.api.interfaces.AudioLearnUI;
 import com.ud.audiolearning.api.interfaces.PrivateUILayout;
+import com.ud.audiolearning.api.service.ApiService;
+import com.ud.audiolearning.api.service.IBusquedasService;
 import com.ud.audiolearning.api.ui.AppSession;
 import com.ud.audiolearning.seguridad.listener.MenuListener;
 import com.vaadin.server.FileResource;
@@ -23,12 +26,15 @@ import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.MenuBar;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 @SuppressWarnings("serial")
@@ -41,9 +47,12 @@ public class PrivateUI extends VerticalLayout implements PrivateUILayout {
 	private TextField tf_busqueda;
 	private MenuBar menuUsuario;
 	private MenuBar menuAplicacion;
-	
+
 	@Autowired
 	MenuListener menuListener;
+
+	@Autowired
+	ApiService apiService;
 
 	private final Command menuCommand = new Command() {
 		@Override
@@ -51,10 +60,10 @@ public class PrivateUI extends VerticalLayout implements PrivateUILayout {
 			if (selectedItem.getText().equals("Salir")) {
 				logout();
 			}
-			if(selectedItem.getText().equals("Editar Perfil")){
+			if (selectedItem.getText().equals("Perfil y Preferencias")) {
 				UI.getCurrent().getNavigator().navigateTo("perfilUsuario");
 			}
-			if(selectedItem.getText().equals("Preferencias")){
+			if (selectedItem.getText().equals("Preferencias")) {
 				UI.getCurrent().getNavigator().navigateTo("preferencias");
 			}
 		}
@@ -142,14 +151,30 @@ public class PrivateUI extends VerticalLayout implements PrivateUILayout {
 		return menuUsuario;
 	}
 
-	private Object avanzada() {
-		
-		return null;
+	private void avanzada() {
+
+		Window w = new Window("Busqueda Avanzada");
+		w.setContent(new ViewBusquedaAvanzada(apiService));
+		w.setWidth("700px");
+		w.setModal(true);
+		w.center();
+		UI.getCurrent().addWindow(w);
+
 	}
 
-	private Object buscar() {
-		
-		return null;
+	private void buscar() {
+
+		String valorBusqueda = tf_busqueda.getValue().trim();
+		if (!valorBusqueda.equals("")) {
+			CriterioBusqueda criterioBusqueda = new CriterioBusqueda();
+			criterioBusqueda.setTipo("B");
+			criterioBusqueda.setQuery(valorBusqueda);
+			AppSession.setCriterioBusqueda(criterioBusqueda);
+			UI.getCurrent().getNavigator().navigateTo("Busqueda");
+		} else {
+			Notification.show("Busqueda!", "Debe ingresar un criterio de busqueda!", Type.WARNING_MESSAGE);
+		}
+
 	}
 
 	private Component construirMenu() {
@@ -184,14 +209,14 @@ public class PrivateUI extends VerticalLayout implements PrivateUILayout {
 	public void addMenuItem(Object menuItem) {
 		ALMenuItem itemMenu = (ALMenuItem) menuItem;
 
-		MenuItem MenuItem = menuAplicacion.addItem(itemMenu.getNombre(), VaadinIcons.MUSIC ,null);
-		if(itemMenu.isNavegable()){
+		MenuItem MenuItem = menuAplicacion.addItem(itemMenu.getNombre(), VaadinIcons.MUSIC, null);
+		if (itemMenu.isNavegable()) {
 			MenuItem.setCommand(menuAppCommand);
 		}
 
 		for (ALItem item : itemMenu.getItems()) {
-			MenuItem SubMenuItem = MenuItem.addItem(item.getNombre(), null);		
-			if(item.isNavegable()){
+			MenuItem SubMenuItem = MenuItem.addItem(item.getNombre(), null);
+			if (item.isNavegable()) {
 				SubMenuItem.setCommand(menuAppCommand);
 			}
 		}

@@ -6,6 +6,7 @@ import org.bson.types.ObjectId;
 import org.vaadin.teemu.VaadinIcons;
 
 import com.ud.audiolearning.api.domain.Audio;
+import com.ud.audiolearning.api.domain.CriterioBusqueda;
 import com.ud.audiolearning.api.service.IBusquedasService;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.StreamResource;
@@ -75,7 +76,7 @@ public class AudioCard extends Panel {
 
 			b_play.addClickListener(e -> medotoPlay(audio.getId()));
 			b_descargar.addClickListener(e -> medotoDescargar(audio.getFile(), busquedasService));
-			b_autor.addClickListener(e -> metodoIrAutor());
+			b_autor.addClickListener(e -> metodoIrAutor(audio.getUsuario().getNombres(),busquedasService));
 			b_favoritos.addClickListener(e -> metodoAgregarFavorito(audio, busquedasService));
 
 			if (audio.getImagen().getBinaryData() != null) {
@@ -123,9 +124,14 @@ public class AudioCard extends Panel {
 		}
 	}
 
-	private Object metodoIrAutor() {
-
-		return null;
+	private void metodoIrAutor(String autor, IBusquedasService busquedasService) {
+		CriterioBusqueda criterioBusqueda = new CriterioBusqueda();
+		criterioBusqueda.setTipo("A");
+		criterioBusqueda.setUsuario(autor);
+		
+		AppSession.setCriterioBusqueda(criterioBusqueda);
+		UI.getCurrent().getNavigator().navigateTo("Busqueda");
+		
 	}
 
 	private void medotoDescargar(String idFile, IBusquedasService busquedasService) {

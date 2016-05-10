@@ -26,6 +26,9 @@ public class HistorialDao implements IHistoricoDao{
 		query.addCriteria(Criteria.where("usuario").is(idUsuario));
 		query.fields().include("audios");
 		HistorialReproduccion historicos = mongoTemplate.findOne(query, HistorialReproduccion.class);
+		if(historicos == null){
+			historicos = new HistorialReproduccion();
+		}
 		return historicos.getAudios();
 	}
 

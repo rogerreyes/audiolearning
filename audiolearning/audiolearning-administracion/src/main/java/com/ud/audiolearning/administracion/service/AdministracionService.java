@@ -75,6 +75,7 @@ public class AdministracionService {
 	
 	public List<Usuario> listadoUsuarios(HashMap<String,String> Parametros){
 		
+		System.err.println(Parametros);
 		return administracionDao.listadoUsuarios(Parametros);
 	}
 	

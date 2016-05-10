@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 
 import com.mongodb.gridfs.GridFSDBFile;
 import com.ud.audiolearning.api.domain.Audio;
+import com.ud.audiolearning.api.domain.CriterioBusqueda;
 
 
 public interface IBusquedasService {
@@ -19,6 +20,9 @@ public interface IBusquedasService {
 	
 	public GridFSDBFile buscarAudioFile(String idAudio);
 	
-	public 	List<Audio> busquedaGeneralAudio(int pageInicio, int pageFin, String texto);
+
+	public List<Audio> busquedaBasica(int pageInicio, int pageFin, String texto);
+
+	public List<Audio> busquedaAvanzada(CriterioBusqueda criterioBusqueda, int skip, int limit);
 
 }

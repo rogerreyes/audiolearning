@@ -32,4 +32,10 @@ public class ApiService {
 	public List<ListaDifusion> findAllListasDifusion() {
 		return apiDao.findAllListasDifusion();
 	}
+	
+	
+	
+	public List<Parametrico> findAllPaices() {
+		return apiDao.findAllPais();
+	}
 }
