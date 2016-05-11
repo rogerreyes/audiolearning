@@ -42,6 +42,7 @@ public class AudioCard extends Panel {
 
 		if(!fix){setWidth("100%");}else{setWidth("230px");}
 			
+	
 		
 		
 		setHeight("300px");

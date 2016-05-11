@@ -1,5 +1,6 @@
 package com.ud.audiolearning.micontenido.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -27,7 +28,7 @@ public class HistorialDao implements IHistoricoDao{
 		query.fields().include("audios");
 		HistorialReproduccion historicos = mongoTemplate.findOne(query, HistorialReproduccion.class);
 		if(historicos == null){
-			historicos = new HistorialReproduccion();
+			return new ArrayList<>();
 		}
 		return historicos.getAudios();
 	}
