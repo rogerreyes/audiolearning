@@ -50,7 +50,7 @@ $v-app-background-color: $v-background-color;
 //--------Botones Multimedia------------//
 
 	.botonesMultimedia .v-button:hover{background:#175F9B; margin-bottom:2px;}
-	.botonesMultimedia .v-button{margin-bottom:2px; background:#FFCC00; border:none; color:#FFF}
+	.botonesMultimedia .v-button{margin-bottom:2px; background:#FFCC00; border:none; color:#FFF; border-radius: 0px;}
   
 
 //-------Style Contenido-------//
@@ -65,12 +65,12 @@ $v-app-background-color: $v-background-color;
 	
 	//-------Panel AudioCard-------//
 	
-	.carouselbutton{background:#FFCC00 !important; width:25px !important; height: 70px !important; margin-top: 100px !important;}
-	.carouselbutton:hover {background:#175F9B !important; width:25px !important; }
+	.carouselbutton{background:#FFE98F !important; width:25px !important; height: 60px !important; margin-top: 100px !important; padding-bottom: 12px}
+	.carouselbutton:hover {background:#179798  !important; width:25px !important; }
 	.descripcionAudioCard {padding:5px;}
 	.descripcionAudioCard .v-button{margin-bottom:2px;}
-	
 	.labelTituloCard { color: #175F9B; font-weight: bold; padding:5px; text-align:middle; }
+	
 
 //-------Style Menu-------//
 	#myMenuBar .v-menubar {background:#175F9B; border:none; }
@@ -139,8 +139,10 @@ $v-app-background-color: $v-background-color;
 
 
 //-------------Inicio---------//
-.tituloCategoria{border-bottom: #999 1px solid; color:#175F9B; font-size: 25px; font-weight:bold; text-align: center}
-.carousel{margin: 10px 0px 30px 0px}
+.tituloCategoria{ color:#4AB59B; font-size: 25px; font-weight:bold; text-align: center; border-bottom:1px dotted #4AB59B;}
+
+.carousel{margin: 10px 0px 10px 0px}
+.buttonVerMas{ background: #E5F9EE ; padding: 5px 10px 20px 10px; border:#4AB59B solid 1px; border-radius:0px; margin:0px 50px 30px 50px}
 
 
 .v-table-orangeHeader .v-table-header{
