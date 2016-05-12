@@ -33,7 +33,10 @@ public class ApiService {
 		return apiDao.findAllListasDifusion();
 	}
 	
-	
+	public List<Parametrico> findAllTiposDenuncia(){
+		
+		return apiDao.findAllTiposDenuncia();
+	}
 	
 	public List<Parametrico> findAllPaices() {
 		return apiDao.findAllPais();
