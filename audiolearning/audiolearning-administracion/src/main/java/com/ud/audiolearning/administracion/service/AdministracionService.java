@@ -6,9 +6,11 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.ud.audiolearning.administracion.dao.AdministracionDao;
 import com.ud.audiolearning.api.anotaciones.AudioLService;
+import com.ud.audiolearning.api.dao.ApiDao;
 import com.ud.audiolearning.api.dao.IAudioDao;
 import com.ud.audiolearning.api.domain.Audio;
 import com.ud.audiolearning.api.domain.Denuncia;
+import com.ud.audiolearning.api.domain.Parametrico;
 import com.ud.audiolearning.api.domain.Rol;
 import com.ud.audiolearning.api.domain.Usuario;
 
@@ -21,6 +23,9 @@ public class AdministracionService {
 	
 	@Autowired
 	IAudioDao audioDao;
+	
+	@Autowired
+	ApiDao apiDao;
 
 	public List<Denuncia> denunciasPorAtender() {
 		return administracionDao.denunciasSinAtender();
@@ -85,5 +90,11 @@ public class AdministracionService {
 	
 	public Rol consultarRol (String id){
 		return administracionDao.consultaROL(id);
+	}
+	
+	public List<Parametrico> findAllPais(){
+		
+		return apiDao.findAllPais();
+		
 	}
 }
