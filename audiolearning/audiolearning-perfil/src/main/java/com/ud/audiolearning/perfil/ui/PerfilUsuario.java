@@ -310,7 +310,7 @@ public class PerfilUsuario extends CustomComponent implements View {
 		
 		BeanContainer<String, Parametrico> BIPaices = new BeanContainer<>(Parametrico.class);
 		BIPaices.setBeanIdProperty("codigo");
-		BIPaices.addAll(apiService.findAllPaices());
+		BIPaices.addAll(apiService.findAllPaises());
 		cb_nacionalidad.setContainerDataSource(BIPaices);
 		cb_nacionalidad.setItemCaptionPropertyId("nombre");
 		cb_nacionalidad.setRequired(true);
