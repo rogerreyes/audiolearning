@@ -14,6 +14,7 @@ public class Rol implements Serializable{
 	@Id
 	private ObjectId id;
 	private String nombre;
+	private String descripcion;
 	@DBRef
 	private List<ALMenuItem> menuItems;
 	private List<String> commonUrl;
@@ -50,10 +51,23 @@ public class Rol implements Serializable{
 		this.id = id;
 	}
 
+	
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	@Override
 	public String toString() {
-		return "Rol [id=" + id + ", nombre=" + nombre + ", menuItems=" + menuItems + ", commonUrl=" + commonUrl + "]";
+		return "Rol [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", menuItems=" + menuItems
+				+ ", commonUrl=" + commonUrl + "]";
 	}
+
+	
 
 	
 }

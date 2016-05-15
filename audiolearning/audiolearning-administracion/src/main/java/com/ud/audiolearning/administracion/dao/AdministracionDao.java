@@ -137,7 +137,7 @@ public class AdministracionDao implements IDenunciasDao {
 		return  mongoTemplate.findOne(query, Rol.class);
 	}
 	
-	public List<Rol> listadoRol(){
+	public List<Rol> findAllRol(){
 		return mongoTemplate.findAll(Rol.class);
 	}
 	

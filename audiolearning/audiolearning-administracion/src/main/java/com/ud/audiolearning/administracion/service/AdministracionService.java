@@ -85,7 +85,7 @@ public class AdministracionService {
 	}
 	
 	public List<Rol> listadoRoles(){
-		return administracionDao.listadoRol();
+		return administracionDao.findAllRol();
 	}
 	
 	public Rol consultarRol (String id){

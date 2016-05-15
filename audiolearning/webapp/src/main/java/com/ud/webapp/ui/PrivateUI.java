@@ -14,6 +14,7 @@ import com.ud.audiolearning.api.interfaces.PrivateUILayout;
 import com.ud.audiolearning.api.service.ApiService;
 import com.ud.audiolearning.api.service.IBusquedasService;
 import com.ud.audiolearning.api.ui.AppSession;
+import com.ud.audiolearning.busquedas.ui.ViewBusquedaAvanzada;
 import com.ud.audiolearning.seguridad.listener.MenuListener;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.FontAwesome;

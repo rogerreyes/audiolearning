@@ -34,7 +34,7 @@ import ru.xpoft.vaadin.VaadinView;
 @SuppressWarnings("serial")
 @UIComponent
 @VaadinView("Administracion/Parametricos")
-public class Parametricos extends CustomComponent implements View {
+public class AdministracionParametricos extends CustomComponent implements View {
 
 	/*- VaadinEditorProperties={"grid":"RegularGrid,20","showGrid":true,"snapToGrid":true,"snapToObject":true,"movingGuides":false,"snappingDistance":10} */
 
@@ -116,7 +116,7 @@ public class Parametricos extends CustomComponent implements View {
 	private Parametrico selectedTipoDenuncia;
 	private Parametrico selectedPais;
 
-	public Parametricos() {
+	public AdministracionParametricos() {
 
 	}
 
@@ -142,9 +142,19 @@ public class Parametricos extends CustomComponent implements View {
 		cargarTiposDenuncia();
 
 		tablaGeneros.addValueChangeListener(e -> cambioGenero(e));
+		tablaGeneros.setVisibleColumns("codigo", "nombre");
+		
 		tablaIdioma.addValueChangeListener(e -> cambioIdioma(e));
+		tablaIdioma.setVisibleColumns("codigo", "nombre");
+		
+		
 		tablaTiposDenuncia.addValueChangeListener(e -> cambioTipoDenuncia(e));
+		tablaTiposDenuncia.setVisibleColumns("codigo", "nombre");
+		
+		
 		tablaPais.addValueChangeListener(e -> cambioPais(e));
+		tablaPais.setVisibleColumns("codigo", "nombre");
+		
 
 		b_addGenero.addClickListener(e -> addParametrico("GENERO"));
 		b_addIdioma.addClickListener(e -> addParametrico("IDIOMA"));
