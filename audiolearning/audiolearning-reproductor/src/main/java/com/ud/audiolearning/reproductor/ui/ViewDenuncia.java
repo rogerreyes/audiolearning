@@ -2,7 +2,6 @@ package com.ud.audiolearning.reproductor.ui;
 
 import java.util.Date;
 
-import org.bson.types.ObjectId;
 
 import com.ud.audiolearning.api.domain.Audio;
 import com.ud.audiolearning.api.domain.ReporteDenuncia;

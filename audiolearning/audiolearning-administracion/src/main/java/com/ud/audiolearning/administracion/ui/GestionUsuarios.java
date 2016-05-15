@@ -72,7 +72,7 @@ public class GestionUsuarios extends CustomComponent implements View {
 	private AdministracionService administracionService;
 	@Autowired
 	ApiService apiService;
-	private Usuario usuario;
+	//private Usuario usuario;
 	private BeanItemContainer<Usuario> beanContainer;
 	private HashMap<String, String> Parametros;
 	private GestionUsuarios gestionUsuarios;

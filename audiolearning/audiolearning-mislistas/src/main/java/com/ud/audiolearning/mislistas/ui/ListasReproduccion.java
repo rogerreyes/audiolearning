@@ -159,15 +159,15 @@ public class ListasReproduccion extends CustomComponent implements View {
 		return vl;
 	}
 	
-	private void addAudioLista(ListaDifusion lista) {
-//		Window w = new Window("Editar Lista");
-//		w.setContent(new ViewAddAudio());
-//		w.setModal(true);
-//		w.center();
-//		w.setWidth("-1px");
-//		w.setHeight("-1px");
-//		UI.getCurrent().addWindow(w);
-	}
+//	private void addAudioLista(ListaDifusion lista) {
+////		Window w = new Window("Editar Lista");
+////		w.setContent(new ViewAddAudio());
+////		w.setModal(true);
+////		w.center();
+////		w.setWidth("-1px");
+////		w.setHeight("-1px");
+////		UI.getCurrent().addWindow(w);
+//	}
 	
 	private void addListaDifusion(ClickEvent e) {
 

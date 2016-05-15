@@ -3,10 +3,6 @@ package com.ud.audiolearning.api.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
-
 import com.ud.audiolearning.api.anotaciones.AudioLService;
 import com.ud.audiolearning.api.dao.ApiDao;
 import com.ud.audiolearning.api.domain.Categoria;

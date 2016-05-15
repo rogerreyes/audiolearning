@@ -53,7 +53,6 @@ import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.OptionGroup;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.PopupDateField;
-import com.vaadin.ui.ProgressBar;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -161,7 +160,7 @@ public class editarAudio extends CustomComponent implements View {
 	private Audio nuevoAudio;
 	private FieldGroup binder;
 
-	private ProgressBar progress;
+	//private ProgressBar progress;
 	// protected File xfile;
 
 	final ByteArrayOutputStream baos = new ByteArrayOutputStream();
