@@ -1,7 +1,6 @@
 package com.ud.audiolearning.config;
 
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -28,11 +27,7 @@ public class ConfigMongoDB {
 		return new GridFsTemplate(getMongoDbFactory(), mongoConverter(), "Audio");
 	}
 
-	/*@Bean(name="imagenGFS")
-	public GridFsTemplate gridFsTemplate2() throws Exception {
-		return new GridFsTemplate(getMongoDbFactory(), mongoConverter(), "Imagen");
-	}*/
-	
+		
 	@Bean
 	public MongoDbFactory getMongoDbFactory() throws Exception {
 		return new SimpleMongoDbFactory(new MongoClient("localhost", 27017), "SpringDB");
@@ -46,3 +41,8 @@ public class ConfigMongoDB {
 		return mongoConverter;
 	}
 }
+
+
+
+
+

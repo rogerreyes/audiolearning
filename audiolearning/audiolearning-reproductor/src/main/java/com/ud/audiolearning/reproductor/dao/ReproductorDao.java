@@ -17,11 +17,8 @@ public class ReproductorDao {
 	@Qualifier("audioGFS")
 	GridFsTemplate gt;
 
-	
-
 	public GridFSDBFile findAudioFile(String id) {
 		return gt.findOne(new Query().addCriteria(Criteria.where("_id").is(id)));
 	}
 
-	
 }

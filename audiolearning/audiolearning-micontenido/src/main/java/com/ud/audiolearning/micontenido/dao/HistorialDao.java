@@ -40,7 +40,7 @@ public class HistorialDao implements IHistoricoDao{
 		query.addCriteria(Criteria.where("usuario").is(idUsuario));
 		Update update = new Update();
 		update.addToSet("audios").value(audio);
-		mongoTemplate.updateFirst(query, update, HistorialReproduccion.class);
+		mongoTemplate.upsert(query, update, HistorialReproduccion.class);
 
 	}
 
