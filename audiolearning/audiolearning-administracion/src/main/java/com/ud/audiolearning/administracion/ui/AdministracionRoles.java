@@ -63,7 +63,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 	public void enter(ViewChangeEvent event) {
 
 		AudioLearnUI audioLearning = (AudioLearnUI) UI.getCurrent();
-		audioLearning.getPrivateUI().getAreaContenido().setHeight("-1px");
+		audioLearning.getPrivateUI().getAreaContenido().setHeight("100%");
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		init();
@@ -163,7 +163,6 @@ public class AdministracionRoles extends CustomComponent implements View {
 		l_titulo.addStyleName(ValoTheme.LABEL_H2);
 		l_titulo.addStyleName(ValoTheme.LABEL_BOLD);
 		table_1.addStyleName("orangeHeader");
-		table_1.addStyleName(ValoTheme.TABLE_NO_STRIPES);
 		table_1.addStyleName(ValoTheme.TABLE_NO_VERTICAL_LINES);
 		b_addRol.addStyleName(ValoTheme.BUTTON_PRIMARY);
 		b_addRol.setIcon(VaadinIcons.PLUS);
@@ -179,19 +178,19 @@ public class AdministracionRoles extends CustomComponent implements View {
 		mainLayout.setHeight("100%");
 		mainLayout.setMargin(true);
 		mainLayout.setSpacing(true);
-
+		
 		// top-level component properties
 		setWidth("100.0%");
 		setHeight("100.0%");
-
+		
 		// hl_cabecera
 		hl_cabecera = buildHl_cabecera();
 		mainLayout.addComponent(hl_cabecera);
-
+		
 		// verticalLayout_2
 		verticalLayout_2 = buildVerticalLayout_2();
 		mainLayout.addComponent(verticalLayout_2);
-
+		
 		return mainLayout;
 	}
 
@@ -204,7 +203,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 		hl_cabecera.setWidth("100.0%");
 		hl_cabecera.setHeight("-1px");
 		hl_cabecera.setMargin(false);
-
+		
 		// l_titulo
 		l_titulo = new Label();
 		l_titulo.setStyleName("mih2");
@@ -213,7 +212,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 		l_titulo.setHeight("-1px");
 		l_titulo.setValue("Administracion de Roles");
 		hl_cabecera.addComponent(l_titulo);
-
+		
 		// b_addRol
 		b_addRol = new Button();
 		b_addRol.setCaption("Crear Nuevo Rol");
@@ -222,7 +221,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 		b_addRol.setHeight("-1px");
 		hl_cabecera.addComponent(b_addRol);
 		hl_cabecera.setComponentAlignment(b_addRol, new Alignment(6));
-
+		
 		return hl_cabecera;
 	}
 
@@ -234,7 +233,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 		verticalLayout_2.setWidth("100.0%");
 		verticalLayout_2.setHeight("-1px");
 		verticalLayout_2.setMargin(false);
-
+		
 		// table_1
 		table_1 = new Table();
 		table_1.setImmediate(false);
@@ -242,7 +241,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 		table_1.setHeight("100.0%");
 		verticalLayout_2.addComponent(table_1);
 		verticalLayout_2.setExpandRatio(table_1, 1.0f);
-
+		
 		return verticalLayout_2;
 	}
 
