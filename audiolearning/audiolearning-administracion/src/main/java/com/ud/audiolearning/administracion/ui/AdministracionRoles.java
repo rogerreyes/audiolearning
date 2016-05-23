@@ -79,7 +79,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 		table_1.setColumnAlignment("Imagen", Align.CENTER);
 		table_1.setColumnAlignment("Admin", Align.CENTER);
 
-		b_addRol.addClickListener(e-> addRol(null));
+		b_addRol.addClickListener(e-> gestionRol(null));
 		llenarRoles();
 	}
 
@@ -110,7 +110,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 
 		Button editRol = new Button();
 		editRol.setIcon(VaadinIcons.EDIT);
-		editRol.addClickListener(e -> editRol(rol));
+		editRol.addClickListener(e -> gestionRol(rol));
 
 		hl.addComponents(editRol, removeRol);
 
@@ -118,9 +118,9 @@ public class AdministracionRoles extends CustomComponent implements View {
 
 	}
 
-	private void editRol(Rol rol) {
+	private void gestionRol(Rol rol) {
 		Window w = new Window();
-		w.setContent(new ViewRol());
+		w.setContent(new ViewRol(rol, administracionService));
 		w.setWidth("-1px");
 		w.setHeight("-1px");
 		w.center();
@@ -150,10 +150,7 @@ public class AdministracionRoles extends CustomComponent implements View {
 
 	}
 
-	private Object addRol(ObjectId id) {
-		
-		return null;
-	}
+	
 
 	private void style() {
 

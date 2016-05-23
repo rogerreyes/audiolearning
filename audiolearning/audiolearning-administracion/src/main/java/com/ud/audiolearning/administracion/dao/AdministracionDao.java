@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import com.ud.audiolearning.api.anotaciones.AudioLDao;
 import com.ud.audiolearning.api.dao.IDenunciasDao;
+import com.ud.audiolearning.api.domain.ALMenuItem;
 import com.ud.audiolearning.api.domain.Denuncia;
 import com.ud.audiolearning.api.domain.ReporteDenuncia;
 import com.ud.audiolearning.api.domain.Rol;
@@ -141,4 +142,8 @@ public class AdministracionDao implements IDenunciasDao {
 		return mongoTemplate.findAll(Rol.class);
 	}
 	
+	
+	public List<ALMenuItem> findAllMenuElement(){
+		return mongoTemplate.findAll(ALMenuItem.class);
+	}
 }

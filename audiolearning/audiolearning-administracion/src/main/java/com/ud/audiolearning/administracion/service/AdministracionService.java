@@ -8,6 +8,7 @@ import com.ud.audiolearning.administracion.dao.AdministracionDao;
 import com.ud.audiolearning.api.anotaciones.AudioLService;
 import com.ud.audiolearning.api.dao.ApiDao;
 import com.ud.audiolearning.api.dao.IAudioDao;
+import com.ud.audiolearning.api.domain.ALMenuItem;
 import com.ud.audiolearning.api.domain.Audio;
 import com.ud.audiolearning.api.domain.Denuncia;
 import com.ud.audiolearning.api.domain.Parametrico;
@@ -96,5 +97,11 @@ public class AdministracionService {
 		
 		return apiDao.findAllPais();
 		
+	}
+	
+	
+	public List<ALMenuItem> consultarMenuItems(){
+		
+		return administracionDao.findAllMenuElement();
 	}
 }

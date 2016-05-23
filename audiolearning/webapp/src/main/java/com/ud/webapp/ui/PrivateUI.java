@@ -114,7 +114,7 @@ public class PrivateUI extends VerticalLayout implements PrivateUILayout {
 		b_avanzada.addClickListener(e -> avanzada());
 
 		String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
-		FileResource resource = new FileResource(new File(basepath + "/WEB-INF/images/logo.png"));
+		FileResource resource = new FileResource(new File(basepath + "/WEB-INF/images/logo5.png"));
 		Image logo = new Image(null, resource);
 
 		GridLayout headerContent = new GridLayout();
