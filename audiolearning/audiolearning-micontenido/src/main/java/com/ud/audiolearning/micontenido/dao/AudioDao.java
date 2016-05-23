@@ -1,6 +1,8 @@
 package com.ud.audiolearning.micontenido.dao;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -22,6 +24,7 @@ import com.mongodb.gridfs.GridFSDBFile;
 import com.ud.audiolearning.api.anotaciones.AudioLDao;
 import com.ud.audiolearning.api.dao.IAudioDao;
 import com.ud.audiolearning.api.domain.Audio;
+import com.ud.audiolearning.api.domain.Comentario;
 import com.ud.audiolearning.api.domain.CriterioBusqueda;
 import com.ud.audiolearning.api.domain.Favorito;
 import com.ud.audiolearning.api.domain.ListaDifusion;
@@ -86,7 +89,7 @@ public class AudioDao implements IAudioDao {
 		query.fields().include("imagen");
 		query.fields().include("usuario");
 		query.fields().include("file");
-	
+
 		query.addCriteria(Criteria.where("categorias.id").all(objectId));
 		query.with(new Sort(Sort.Direction.DESC, "fechaCreacion"));
 		query.limit(10);
@@ -99,11 +102,10 @@ public class AudioDao implements IAudioDao {
 		query.addCriteria(Criteria.where("usuario").is(idUsuario));
 		query.fields().include("audios");
 		Favorito favoritos = mongoTemplate.findOne(query, Favorito.class);
-		if(favoritos==null){
+		if (favoritos == null) {
 			return new ArrayList<>();
 		}
-		
-		
+
 		return favoritos.getAudios();
 	}
 
@@ -115,7 +117,6 @@ public class AudioDao implements IAudioDao {
 		Update update = new Update();
 		update.addToSet("audios").value(audio);
 		mongoTemplate.upsert(query, update, Favorito.class);
-		
 
 	}
 
@@ -190,25 +191,23 @@ public class AudioDao implements IAudioDao {
 			List<Usuario> usuarios = mongoTemplate.find(queryUsuarios, Usuario.class);
 			docCriterias.add(Criteria.where("usuario.id").in(usuarios));
 		}
-		
-		if(criterioBusqueda.getCategorias()!=null && criterioBusqueda.getCategorias().size()>0){
+
+		if (criterioBusqueda.getCategorias() != null && criterioBusqueda.getCategorias().size() > 0) {
 			docCriterias.add(Criteria.where("categorias.id").in(criterioBusqueda.getCategorias()));
 		}
-		
-		if(criterioBusqueda.getGeneros()!=null && criterioBusqueda.getGeneros().size()>0){
+
+		if (criterioBusqueda.getGeneros() != null && criterioBusqueda.getGeneros().size() > 0) {
 			docCriterias.add(Criteria.where("genero").in(criterioBusqueda.getGeneros()));
 		}
 
-		if(criterioBusqueda.getFechaInicial()!=null && criterioBusqueda.getFechaInicial()!=null){
-			docCriterias.add(Criteria.where("fechaCreacion").gt(criterioBusqueda.getFechaInicial()).lt(criterioBusqueda.getFechafinal()));
+		if (criterioBusqueda.getFechaInicial() != null && criterioBusqueda.getFechaInicial() != null) {
+			docCriterias.add(Criteria.where("fechaCreacion").gt(criterioBusqueda.getFechaInicial())
+					.lt(criterioBusqueda.getFechafinal()));
 		}
-		
 
 		if (docCriterias.size() > 0) {
 			CRITERIA.andOperator(docCriterias.toArray(new Criteria[docCriterias.size()]));
 		}
-		
-		
 
 		Query query = new Query();
 		query.addCriteria(CRITERIA);
@@ -217,6 +216,40 @@ public class AudioDao implements IAudioDao {
 
 		return mongoTemplate.find(query, Audio.class);
 
+	}
+
+	@Override
+	public List<Comentario> consultarComentarios(ObjectId id) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("id").is(id));
+		query.fields().include("comentarios");
+		
+		List<Comentario> comentarios = mongoTemplate.findOne(query, Audio.class).getComentarios();
+		
+
+		comentarios.sort(new Comparator<Comentario>() {
+
+			@Override
+			public int compare(Comentario o1, Comentario o2) {
+				return o2.getFechaComentario().compareTo(o1.getFechaComentario());
+			}
+			
+		});
+		
+				
+		return comentarios;
+	}
+
+	@Override
+	public void agregarComentario(ObjectId audioID, Comentario comentario) {
+
+		Query query = new Query();
+		query.addCriteria(Criteria.where("id").is(audioID));
+		Update update = new Update();
+		update.addToSet("comentarios").value(comentario);
+		mongoTemplate.upsert(query, update, Audio.class);
+
+		System.err.println(comentario);
 	}
 
 }

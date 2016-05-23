@@ -33,6 +33,7 @@ public class Audio implements Serializable{
 	@DBRef
 	private List<Categoria> categorias;
 	private List<Etiqueta> etiquetas;
+	private List<Comentario> comentarios;
 	private String file;
 	private Imagen imagen;
 
@@ -155,13 +156,25 @@ public class Audio implements Serializable{
 	public void setImagen(Imagen imagen) {
 		this.imagen = imagen;
 	}
+	
+	
+
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
 
 	@Override
 	public String toString() {
 		return "Audio [id=" + id + ", titulo=" + titulo + ", fechaCreacion=" + fechaCreacion + ", estado=" + estado
 				+ ", usuario=" + usuario + ", descripcion=" + descripcion + ", genero=" + genero + ", idioma=" + idioma
-				+ ", imagen=" + imagen + ", listasDifusion=" + listasDifusion + ", categorias=" + categorias
-				+ ", etiquetas=" + etiquetas + "]";
+				+ ", fileName=" + fileName + ", fileMimeType=" + fileMimeType + ", listasDifusion=" + listasDifusion
+				+ ", categorias=" + categorias + ", etiquetas=" + etiquetas + ", comentarios=" + comentarios + ", file="
+				+ file + ", imagen=" + imagen + "]";
 	}
+
 
 }

@@ -1,11 +1,13 @@
 package com.ud.audiolearning.api.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
 
 import com.mongodb.gridfs.GridFSDBFile;
 import com.ud.audiolearning.api.domain.Audio;
+import com.ud.audiolearning.api.domain.Comentario;
 import com.ud.audiolearning.api.domain.CriterioBusqueda;
 
 public interface IAudioDao {
@@ -29,5 +31,9 @@ public interface IAudioDao {
 	public List<Audio> searchAudio(int pagina, int tamañoPagina, String texto);
 
 	public List<Audio> busquedaAvanzada(CriterioBusqueda criterioBusqueda, int skip, int limit);
+
+	public void agregarComentario(ObjectId audioID, Comentario comentario);
+
+	public List<Comentario> consultarComentarios(ObjectId id);
 
 }
