@@ -49,8 +49,6 @@ public class LoginUI extends VerticalLayout implements LoginUILayout {
 		vlbottom.addComponent(loginForm);
 		addComponents(vltop, vlbottom);
 		vlbottom.setComponentAlignment(loginForm, Alignment.TOP_CENTER);
-		pf_password.setValue("admin");
-		tf_usuario.setValue("prueba");
 	}
 
 	private Component buildLoginForm() {

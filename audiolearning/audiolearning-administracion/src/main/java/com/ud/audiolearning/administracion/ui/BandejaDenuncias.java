@@ -72,11 +72,11 @@ public class BandejaDenuncias extends CustomComponent implements View {
 
 		table_1.addGeneratedColumn("administracion", this::administracion);
 		table_1.addGeneratedColumn("Imagen", this::imagen);
-		table_1.setVisibleColumns("Imagen", "id", "audio.titulo", "estado", "fechaApertura",
-				"numeroDenuncias", "administracion");
-		table_1.setColumnHeaders("", "ID DENUNCIA", "NOMBRE DEL AUDIO", "ESTADO", "FECHA APERTURA",
-				"NUMERO DENUNCIAS","");
-		table_1.setColumnWidth("Imagen", 90);
+		table_1.setVisibleColumns("Imagen", "administracion", "id", "audio.titulo", "estado", "fechaApertura",
+				"numeroDenuncias" );
+		table_1.setColumnHeaders("", "","ID DENUNCIA", "NOMBRE DEL AUDIO", "ESTADO", "FECHA APERTURA",
+				"NUMERO DENUNCIAS");
+		table_1.setColumnWidth("Imagen", 80);
 		table_1.setSelectable(true);
 		llenar(null);
 	}

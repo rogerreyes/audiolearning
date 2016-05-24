@@ -10,8 +10,13 @@ import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.OptionGroup;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.ValoTheme;
 
 @SuppressWarnings("serial")
@@ -115,6 +120,19 @@ public class ViewCalificacion extends CustomComponent {
 	private void init() {
 		
 		llenarOptionGroups();
+		
+		b_calificar.addClickListener(new ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				
+				Notification n = new Notification("Correcto!", "Registrado correctamente la Calificación", Type.HUMANIZED_MESSAGE);
+				n.setDelayMsec(3600);
+				n.show(UI.getCurrent().getPage());
+				UI.getCurrent().getWindows().forEach(window-> window.close());
+				
+			}
+		});;
 	}
 
 	public void llenarOptionGroups() {

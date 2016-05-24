@@ -66,9 +66,9 @@ public class DenunciasProcesadas extends CustomComponent implements View {
 
 		table_1.addGeneratedColumn("ver", this::administracion);
 		table_1.setVisibleColumns("id", "audio.titulo", "estado", "fechaApertura", "fechaCierre", "numeroDenuncias",
-				"usuarioAtencion.nick");
+				"usuarioAtencion.nick", "detalleCierre");
 		table_1.setColumnHeaders("ID DENUNCIA", "AUDIO", "ESTADO", "FECHA APERTURA", "FECHA CIERRE", "NUMERO DENUNCIAS",
-				"USUARIO CIERRE");
+				"USUARIO CIERRE", "OBSERVACIÓN");
 		table_1.setSelectable(true);
 		llenar(null);
 

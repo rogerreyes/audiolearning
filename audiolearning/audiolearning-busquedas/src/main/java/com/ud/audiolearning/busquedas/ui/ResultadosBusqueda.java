@@ -50,7 +50,7 @@ public class ResultadosBusqueda extends CustomComponent implements View {
 	
 
 	private int numeroPagina = 0;
-	private static int RESULTADOS_POR_PAGINA = 20;
+	private static int RESULTADOS_POR_PAGINA = 10;
 
 	private CssLayout contenido;
 	private CriterioBusqueda criterio;
