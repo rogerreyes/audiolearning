@@ -1,6 +1,11 @@
 package com.ud.audiolearning.perfil.ui;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -207,7 +212,11 @@ public class PerfilUsuario extends CustomComponent implements View {
 		hl_gridContent.addComponent(grid);
 		hl_gridContent.setComponentAlignment(grid, Alignment.MIDDLE_CENTER);
 		
+		if(usuario.getCategorias()!= null){
 		usuario.getCategorias().forEach(categoria -> grid.select(categoria));
+		}else{
+			usuario.setCategorias(new ArrayList<Categoria>());
+		}
 		
 		b_enviar.addClickListener(e-> actualizarUsuario());
 		tf_nick.setEnabled(false);
@@ -221,7 +230,8 @@ public class PerfilUsuario extends CustomComponent implements View {
 			validadFormulario();
 			binder.commit();
 			
-			this.usuario.getCategorias().clear();
+			if(this.usuario.getCategorias()!= null)
+				this.usuario.getCategorias().clear();
 			grid.getSelectedRows().forEach(item ->{ this.usuario.getCategorias().add((Categoria) item);});
 			
 			perfilService.actualizarUsuario(this.usuario);

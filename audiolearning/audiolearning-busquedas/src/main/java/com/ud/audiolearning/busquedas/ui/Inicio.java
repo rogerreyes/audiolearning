@@ -62,7 +62,7 @@ public class Inicio extends CustomComponent implements View {
 
 		
 
-		
+		if (AppSession.getUser().getCategorias()!= null){
 
 		AppSession.getUser().getCategorias().forEach(categoria -> {
 
@@ -128,6 +128,7 @@ public class Inicio extends CustomComponent implements View {
 			
 
 		});
+		}
 
 	}
 
